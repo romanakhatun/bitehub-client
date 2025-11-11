@@ -31,14 +31,19 @@ body {
   @apply bg-primary-content text-[15px] text-primary px-[19px] py-2 rounded-xl hover:bg-primary hover:text-primary-content shadow-none transition-all duration-200;
 }
 
+.btn-secondary {
+  @apply bg-primary-content text-[15px] text-base-content border border-black px-12 py-2 rounded-xl hover:bg-white shadow-none transition-all duration-200 cursor-pointer;
+}
 /* Common Style */
 @layer components {
   .footer-heading {
     @apply text-[20px] font-medium mb-2 text-white;
   }
+
   .section-heading {
-    @apply text-5xl font-bold text-center mb-5;
+    @apply text-6xl font-medium text-center mb-5;
   }
+
   .section-text {
     @apply text-gray-600 leading-relaxed max-w-3xl mx-auto text-center;
   }
@@ -46,6 +51,7 @@ body {
   .card-common {
     @apply bg-base-100 shadow-lg rounded-2xl p-4 hover:shadow-xl transition-all duration-300;
   }
+
   .social-icon {
     @apply w-9 h-9 flex items-center text-base-100 border border-base-100 justify-center rounded-full transition-colors duration-200 hover:bg-primary-content hover:text-primary hover:border-primary;
   }
