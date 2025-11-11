@@ -34,6 +34,7 @@ body {
 .btn-secondary {
   @apply bg-primary-content text-[15px] text-base-content border border-black px-12 py-2 rounded-xl hover:bg-white shadow-none transition-all duration-200 cursor-pointer;
 }
+
 /* Common Style */
 @layer components {
   .footer-heading {
@@ -49,7 +50,7 @@ body {
   }
 
   .card-common {
-    @apply bg-base-100 shadow-lg rounded-2xl p-4 hover:shadow-xl transition-all duration-300;
+    @apply bg-base-100 rounded-xl shadow-[0px_0px_30px_0px_rgba(35,2,39,0.11)] p-8 pb-8 transition-all duration-500;
   }
 
   .social-icon {

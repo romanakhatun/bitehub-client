@@ -1,6 +1,7 @@
 import { Outlet } from "react-router";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import NewsletterSection from "../components/NewsletterSection";
 
 const MainLayout = () => {
   return (
@@ -13,8 +14,12 @@ const MainLayout = () => {
       <div className="min-h-screen">
         <Outlet />
       </div>
-      <div className="bg-neutral">
-        <Footer />
+
+      <div className="mt-12">
+        <NewsletterSection />
+        <div className="bg-neutral">
+          <Footer />
+        </div>
       </div>
     </div>
   );
