@@ -1,7 +1,8 @@
 import { NavLink, Link } from "react-router";
-import logo from "../assets/logo.svg";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import { TfiClose } from "react-icons/tfi";
+import { BsPersonCircle } from "react-icons/bs";
+import logo from "../assets/logo.svg";
 
 // Define the navigation items
 const navLinks = [
@@ -10,6 +11,13 @@ const navLinks = [
   { name: "Services", path: "/services" },
   { name: "Blog", path: "/blog" },
   { name: "Contact Us", path: "/contact" },
+];
+// User Dropdown Links
+const userLinks = [
+  { name: "Add Review", path: "/add-review" },
+  { name: "My Reviews", path: "/my-reviews" },
+  { name: "My Favorites", path: "/my-favorites" },
+  { name: "Logout", path: "/logout" }, // Logout link
 ];
 
 const Navbar = () => {
@@ -41,7 +49,7 @@ const Navbar = () => {
             <div className="navbar-start">
               <div className="order-1 lg:hidden">
                 <label htmlFor={drawerId} className="btn btn-ghost">
-                  <HiOutlineBars3 size={35} className="" />
+                  <HiOutlineBars3 size={35} />
                 </label>
               </div>
 
@@ -50,6 +58,7 @@ const Navbar = () => {
               </Link>
             </div>
 
+            {/* Desktop Menu */}
             <div className="navbar-center hidden lg:flex">
               <ul className="menu menu-horizontal gap-2">
                 {navLinks.map((link) => (
@@ -73,6 +82,34 @@ const Navbar = () => {
               >
                 Register
               </Link>
+
+              {/* dropdown trigger */}
+              <div className="dropdown dropdown-end">
+                <div tabIndex={0} role="button" className="cursor-pointer m-1">
+                  <BsPersonCircle className="" size={40} />
+                </div>
+
+                {/* dropdown content */}
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu bg-white rounded-box z-10 w-52 p-2 shadow-lg flex flex-col gap-1"
+                >
+                  {userLinks.map((link) => (
+                    <li key={link.name}>
+                      <NavLink
+                        to={link.path}
+                        className={({ isActive }) =>
+                          `text-base-content block px-[15px] py-2.3 hover:bg-primary-content rounded-lg transition-colors duration-200 ${
+                            isActive ? "bg-primary-content" : ""
+                          }`
+                        }
+                      >
+                        {link.name}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>

@@ -9,6 +9,8 @@ import EditReview from "../pages/Reviews/EditReview";
 import MyFavorites from "../pages/Favorites/MyFavorites";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
+import NotFound from "../pages/NotFound";
+import AddReview from "../pages/Reviews/AddReview";
 
 export const router = createBrowserRouter([
   {
@@ -18,14 +20,14 @@ export const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/all-reviews", element: <AllReviews /> },
       { path: "/review/:id", element: <ReviewDetails /> },
-      // {
-      //   path: "/add-review",
-      //   element: (
-      //     <ProtectedRoute>
-      //       <AddReview />
-      //     </ProtectedRoute>
-      //   ),
-      // },
+      {
+        path: "/add-review",
+        element: (
+          // <ProtectedRoute>
+          <AddReview />
+          // </ProtectedRoute>
+        ),
+      },
       // {
       //   path: "/my-reviews",
       //   element: (
@@ -54,5 +56,9 @@ export const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);

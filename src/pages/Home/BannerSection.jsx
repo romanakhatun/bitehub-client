@@ -41,7 +41,7 @@ const BannerSection = () => {
               </Link>
 
               <Link
-                to="/reviews"
+                to="/all-reviews"
                 className="border border-white hover:bg-primary hover:border-primary text-white px-6 py-2 rounded-lg text-center transition-colors duration-200 flex items-center justify-center"
               >
                 Explore Reviews

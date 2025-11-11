@@ -1,131 +1,86 @@
-import { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router";
 import SocialLogin from "../../components/SocialLogin";
+import PageHeader from "../../components/PageHeader";
+import FormInput from "../../components/FormInput";
+import PasswordForm from "../../components/PasswordForm";
 
 const Register = () => {
-  const [showPass, setShowPass] = useState(true);
   const handleRegister = (e) => {
     e.preventDefault();
   };
   return (
-    <div className="border-t border-black">
-      <section className="">
-        <div className="py-15 bg-secondary-content">
-          <h1 className="section-heading font-garamond">Create Account</h1>
-          <div className="flex justify-center items-center">
-            <Link className="text-[#00000099]" to="/">
-              Home
-            </Link>
-            <IoIosArrowForward className="text-[#00000099]" />
-            <span className="text-[#565656] font-medium">Create Account</span>
-          </div>
-        </div>
+    <section className="border-t border-black">
+      <PageHeader title={"Create Account"} currentPath={"Register"} />
 
-        <div className="max-w-xl mx-auto my-15">
-          <form onSubmit={handleRegister}>
-            <h3 className="font-garamond text-2xl text-base-content font-medium  mb-3">
-              Register
-            </h3>
-            <div className="space-y-5">
-              {/* Name Fields */}
-              <div>
-                <label className="label text-sm font-semibold">
-                  Your Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  className="input input-bordered w-full"
-                  placeholder="Enter your name"
-                />
-              </div>
+      <div className="max-w-xl mx-auto my-15">
+        <form onSubmit={handleRegister}>
+          <h3 className="font-garamond text-2xl text-base-content font-medium  mb-3">
+            Register
+          </h3>
+          <div className="space-y-5">
+            {/* Name Fields */}
+            <FormInput
+              label="Your Name"
+              type="text"
+              name="name"
+              required={true}
+              placeholder="Enter your name"
+            />
 
-              {/* Photo URL Fields */}
-              <div>
-                <label className="label text-sm font-semibold">
-                  Photo URL <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="photo"
-                  required
-                  className="input input-bordered w-full"
-                  placeholder="Enter your Photo URL"
-                />
-              </div>
+            {/* Photo URL Fields */}
+            <FormInput
+              label="Photo URL"
+              type="url"
+              name="photo"
+              required={true}
+              placeholder="Enter your Photo URL"
+            />
 
-              {/* Email Fields */}
-              <div>
-                <label className="label text-sm font-semibold">
-                  Email address <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  className="input input-bordered w-full"
-                  placeholder="Enter your email address"
-                />
-              </div>
+            {/* Email Fields */}
+            <FormInput
+              label="Email address"
+              type="email"
+              name="email"
+              required={true}
+              placeholder="Enter your email address"
+            />
 
-              {/* Password Fields */}
-              <div>
-                <label className="label text-sm font-semibold">
-                  Password <span className="text-red-500">*</span>
-                </label>
-                <label className="input w-full">
-                  <input
-                    type={showPass ? "text" : "password"}
-                    name="password"
-                    required
-                    placeholder="Enter your password"
-                  />
-                  <span
-                    onClick={() => setShowPass(!showPass)}
-                    className="cursor-pointer"
-                  >
-                    {showPass ? <FaEyeSlash /> : <FaEye />}
-                  </span>
-                </label>
-              </div>
+            {/* Password Fields */}
+            <PasswordForm name="password" />
 
-              {/* Terms and condition Fields */}
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  name="terms"
-                  className="checkbox rounded-sm checkbox-primary checkbox-xs"
-                />
-                <span className="text-sm">
-                  Accept <strong>Terms & Condition</strong>
-                </span>
-              </div>
-              <button className="btn-secondary">Submit</button>
+            {/* Terms and condition Fields */}
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                name="terms"
+                className="checkbox rounded-sm checkbox-primary checkbox-xs"
+              />
+              <span className="text-sm">
+                Accept <strong>Terms & Condition</strong>
+              </span>
             </div>
-          </form>
-
-          {/* Divider */}
-          <div className="flex items-center my-4">
-            <div className="grow h-px bg-gray-300"></div>
-            <span className="px-3 text-gray-500 text-sm">or</span>
-            <div className="grow h-px bg-gray-300"></div>
+            <button className="btn-secondary">Submit</button>
           </div>
+        </form>
 
-          <SocialLogin />
-
-          {/* Login Link */}
-          <p className="text-center text-sm">
-            Have an account?{" "}
-            <Link to="/login" className="text-primary font-semibold">
-              Login
-            </Link>
-          </p>
+        {/* Divider */}
+        <div className="flex items-center my-4">
+          <div className="grow h-px bg-gray-300"></div>
+          <span className="px-3 text-gray-500 text-sm">or</span>
+          <div className="grow h-px bg-gray-300"></div>
         </div>
-      </section>
-    </div>
+
+        <SocialLogin />
+
+        {/* Login Link */}
+        <p className="text-center text-sm">
+          Have an account?{" "}
+          <Link to="/login" className="text-primary font-semibold">
+            Login
+          </Link>
+        </p>
+      </div>
+    </section>
   );
 };
 
