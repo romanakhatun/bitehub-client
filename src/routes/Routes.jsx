@@ -23,42 +23,41 @@ export const router = createBrowserRouter([
       {
         path: "/add-review",
         element: (
-          // <ProtectedRoute>
-          <AddReview />
-          // </ProtectedRoute>
+          <ProtectedRoute>
+            <AddReview />
+          </ProtectedRoute>
         ),
       },
       {
         path: "/my-reviews",
         element: (
-          // <ProtectedRoute>
-          <MyReviews />
-          // </ProtectedRoute>
+          <ProtectedRoute>
+            <MyReviews />
+          </ProtectedRoute>
         ),
       },
-      // {
-      //   path: "/edit-review/:id",
-      //   element: (
-      //     <ProtectedRoute>
-      //       <EditReview />
-      //     </ProtectedRoute>
-      //   ),
-      // },
-      // {
-      //   path: "/my-favorites",
-      //   element: (
-      //     <ProtectedRoute>
-      //       <MyFavorites />
-      //     </ProtectedRoute>
-      //   ),
-      // },
-
+      {
+        path: "/edit-review/:id",
+        element: (
+          <ProtectedRoute>
+            <EditReview />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/my-favorites",
+        element: (
+          <ProtectedRoute>
+            <MyFavorites />
+          </ProtectedRoute>
+        ),
+      },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
     ],
   },
-  // {
-  //   path: "*",
-  //   element: <NotFound />,
-  // },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
 ]);

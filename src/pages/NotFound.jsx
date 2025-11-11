@@ -1,8 +1,9 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import NotFoundBg from "../assets/not-found-bg.png";
 import NotFoundIcon from "../assets/not-found.svg";
 
 const NotFound = () => {
+  const navigate = useNavigate();
   return (
     <div
       className="min-h-screen relative bg-cover bg-secondary-content flex items-center bg-center"
@@ -19,9 +20,12 @@ const NotFound = () => {
             The Page You Are Looking For Doesn‘t Exist
           </h1>
         </div>
-        <Link to="/" className="btn-primary px-6 py-3">
-          Back to Home
-        </Link>
+        <button
+          onClick={() => navigate(-1)}
+          className="btn-primary cursor-pointer px-6 py-3"
+        >
+          Go Back
+        </button>
       </div>
     </div>
   );

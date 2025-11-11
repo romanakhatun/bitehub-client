@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../../components/SocialLogin";
 import PageHeader from "../../components/PageHeader";
 import FormInput from "../../components/FormInput";
@@ -10,6 +10,10 @@ const Login = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { signInUser } = use(AuthContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  // console.log(location);
 
   // reusable error & success function
   const showError = (message, duration = 5000) => {
@@ -29,6 +33,7 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         showSuccess("Login Successful");
+        navigate(location.state || "/");
       })
       .catch((err) => {
         showError(err.message);

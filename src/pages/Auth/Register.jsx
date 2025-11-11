@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../../components/SocialLogin";
 import PageHeader from "../../components/PageHeader";
 import FormInput from "../../components/FormInput";
@@ -11,6 +11,10 @@ const Register = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { createUser } = use(AuthContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  // console.log(location);
 
   // reusable error & success function
   const showError = (message, duration = 5000) => {
@@ -29,7 +33,7 @@ const Register = () => {
     const name = e.target.name.value;
     const photo = e.target.photo.value;
     const terms = e.target.terms.checked;
-    console.log(email, name, password, photo, terms);
+    // console.log(email, name, password, photo, terms);
 
     const pass6Pattern = /^.{6,}$/;
     const passUpperCasePattern = /(?=.*[A-Z])/;
@@ -55,7 +59,7 @@ const Register = () => {
 
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         showSuccess("Registration Successful");
 
         //update profile
@@ -64,13 +68,14 @@ const Register = () => {
           photoURL: photo,
         };
         updateProfile(result.user, profile);
+        navigate(location.state || "/");
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         showError(err.message || "Registration Failed");
       });
 
-    console.log("register submitted");
+    // console.log("register submitted");
   };
   return (
     <section className="border-t border-black">
