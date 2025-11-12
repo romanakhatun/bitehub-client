@@ -3,28 +3,18 @@ import SocialLogin from "../../components/SocialLogin";
 import PageHeader from "../../components/PageHeader";
 import FormInput from "../../components/FormInput";
 import PasswordForm from "../../components/PasswordForm";
-import { useState } from "react";
 import { updateProfile } from "firebase/auth";
 import useAuth from "../../hooks/useAuth";
+import useMessage from "../../hooks/useMessage";
+import AlertMessage from "../../components/AlertMessage";
 
 const Register = () => {
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const { error, success, showError, showSuccess } = useMessage();
   const { createUser } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
   // console.log(location);
-
-  // reusable error & success function
-  const showError = (message, duration = 5000) => {
-    setError(message);
-    setTimeout(() => setError(""), duration);
-  };
-  const showSuccess = (message, duration = 5000) => {
-    setSuccess(message);
-    setTimeout(() => setSuccess(""), duration);
-  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -83,23 +73,9 @@ const Register = () => {
 
       <div className="max-w-xl mx-auto my-15">
         <form onSubmit={handleRegister}>
-          {error && (
-            <div
-              className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6 text-sm"
-              role="alert"
-            >
-              <p className="font-semibold">Registration Error:</p>
-              <p>{error}</p>
-            </div>
-          )}
-          {success && (
-            <div
-              className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6 text-sm"
-              role="alert"
-            >
-              <p className="font-semibold">{success}</p>
-            </div>
-          )}
+          {/* reusable messages */}
+          <AlertMessage type="error" message={error} />
+          <AlertMessage type="success" message={success} />
 
           <h3 className="font-garamond text-2xl text-base-content font-medium  mb-3">
             Register

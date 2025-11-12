@@ -2,15 +2,62 @@ import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import PageHeader from "../../components/PageHeader";
 import FormInput from "../../components/FormInput";
+import useAuth from "../../hooks/useAuth";
+import useAxios from "../../hooks/useAxios";
+import useMessage from "../../hooks/useMessage";
+import AlertMessage from "../../components/AlertMessage";
 
 const AddReview = () => {
-  // State for handling the Star Rating input
+  const { error, success, showError, showSuccess } = useMessage();
   const [rating, setRating] = useState(0);
+  const { user } = useAuth();
+  const axiosInstance = useAxios();
 
   const handleSubmitReview = (e) => {
     e.preventDefault();
-    // Logic to handle review submission (form data + rating state)
-    console.log("Submitting Review with Rating:", rating);
+
+    const foodName = e.target.foodName.value;
+    const foodImage = e.target.foodImage.value;
+    const restaurantName = e.target.restaurantName.value;
+    const location = e.target.location.value;
+    const rating = e.target.rating.value;
+    const reviewText = e.target.reviewText.value;
+
+    // console.log(
+    //   "Submitting Review:",
+    //   foodName,
+    //   foodImage,
+    //   restaurantName,
+    //   location,
+    //   rating,
+    //   reviewText,
+    //   submissionDate
+    // );
+
+    const newReview = {
+      foodName,
+      foodImage,
+      restaurantName,
+      location,
+      rating,
+      reviewText,
+      email: user?.email,
+      submissionDate: new Date(),
+    };
+
+    axiosInstance
+      .post("/reviews", newReview)
+      .then((data) => {
+        console.log("after instance call", data.data);
+        if (data.data.insertedId) {
+          showSuccess("Thank you for contributing to the BiteHub!");
+          e.target.reset();
+          setRating(null);
+        }
+      })
+      .catch((err) => {
+        showError(err.message);
+      });
   };
 
   return (
@@ -23,7 +70,7 @@ const AddReview = () => {
             Add Your Local Food Review
           </h3>
 
-          <div className="space-y-5">
+          <div className="space-y-5 mb-3">
             {/* Food Name */}
             <FormInput
               label="Food Name"
@@ -110,12 +157,11 @@ const AddReview = () => {
             {/* Submit Button */}
             <button className="btn-secondary w-full">Submit Review</button>
           </div>
-        </form>
 
-        {/*  Placeholder for success/error message */}
-        <p className="text-center mt-6 text-sm text-green-600">
-          Thank you for contributing to the Local Food Lovers Network!
-        </p>
+          {/* reusable messages */}
+          <AlertMessage type="error" message={error} />
+          <AlertMessage type="success" message={success} />
+        </form>
       </div>
     </section>
   );
