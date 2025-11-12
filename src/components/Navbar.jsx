@@ -3,8 +3,7 @@ import { HiOutlineBars3 } from "react-icons/hi2";
 import { TfiClose } from "react-icons/tfi";
 import { BsPersonCircle } from "react-icons/bs";
 import logo from "../assets/logo.svg";
-import { use } from "react";
-import { AuthContext } from "../context/AuthContext";
+import useAuth from "../hooks/useAuth";
 
 // Define the navigation items
 const navLinks = [
@@ -22,7 +21,7 @@ const userLinks = [
 ];
 
 const Navbar = () => {
-  const { user, signOutUser } = use(AuthContext);
+  const { user, signOutUser } = useAuth();
   const drawerId = "mobile-menu-drawer";
 
   const NavItem = ({ to, children }) => (

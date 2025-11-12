@@ -3,14 +3,14 @@ import SocialLogin from "../../components/SocialLogin";
 import PageHeader from "../../components/PageHeader";
 import FormInput from "../../components/FormInput";
 import PasswordForm from "../../components/PasswordForm";
-import { use, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { useState } from "react";
 import { updateProfile } from "firebase/auth";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const { createUser } = use(AuthContext);
+  const { createUser } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();

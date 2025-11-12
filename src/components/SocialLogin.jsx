@@ -1,9 +1,8 @@
-import { use } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { AuthContext } from "../context/AuthContext";
+import useAuth from "../hooks/useAuth";
 
 const SocialLogin = () => {
-  const { signInGoogleUser } = use(AuthContext);
+  const { signInGoogleUser } = useAuth();
   const handleGoogleSignIn = () => {
     signInGoogleUser()
       .then((result) => {

@@ -3,13 +3,13 @@ import SocialLogin from "../../components/SocialLogin";
 import PageHeader from "../../components/PageHeader";
 import FormInput from "../../components/FormInput";
 import PasswordForm from "../../components/PasswordForm";
-import { use, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const { signInUser } = use(AuthContext);
+  const { signInUser } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
