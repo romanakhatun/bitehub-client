@@ -3,7 +3,7 @@ import ReviewCard from "../../components/ReviewCard";
 import useAxios from "../../hooks/useAxios";
 
 const FeaturedReviews = () => {
-  const [reviewsData, setReviewsData] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const axiosInstance = useAxios();
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const FeaturedReviews = () => {
       .get("/featured-reviews")
       .then((data) => {
         console.log(data.data);
-        setReviewsData(data.data);
+        setReviews(data.data);
       })
       .catch((err) => {
         console.log(err.message);
@@ -30,8 +30,8 @@ const FeaturedReviews = () => {
         </p>
 
         {/* Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {reviewsData.map((review, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {reviews.map((review, index) => (
             <ReviewCard review={review} key={index} />
           ))}
         </div>

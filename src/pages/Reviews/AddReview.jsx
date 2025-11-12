@@ -99,7 +99,7 @@ const AddReview = () => {
               placeholder="e.g., The Curry House"
             />
 
-            {/*  Location */}
+            {/* Location */}
             <FormInput
               label="Location (City/Neighborhood)"
               type="text"
@@ -108,7 +108,7 @@ const AddReview = () => {
               placeholder="e.g., Downtown, Manhattan, Sector 5"
             />
 
-            {/* Star Rating (Custom Component) */}
+            {/* Star Rating */}
             <div>
               <label className="label text-sm font-semibold mb-2 block">
                 Your Rating <span className="text-red-500">*</span>
@@ -128,7 +128,6 @@ const AddReview = () => {
                       />
                       <FaStar
                         className="cursor-pointer transition-colors duration-200"
-                        // If current value is less than or equal to the selected rating, make it yellow
                         color={ratingValue <= rating ? "#ffd156" : "#e4e5e9"}
                         size={30}
                       />
