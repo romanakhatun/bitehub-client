@@ -9,6 +9,7 @@ import useAuth from "../hooks/useAuth";
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "All Reviews", path: "/all-reviews" },
+  { name: "My Favorites", path: "/my-favorites" },
   { name: "Services", path: "/services" },
   { name: "Blog", path: "/blog" },
   { name: "Contact Us", path: "/contact" },
@@ -17,7 +18,6 @@ const navLinks = [
 const userLinks = [
   { name: "Add Review", path: "/add-review" },
   { name: "My Reviews", path: "/my-reviews" },
-  { name: "My Favorites", path: "/my-favorites" },
 ];
 
 const Navbar = () => {
