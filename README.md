@@ -1,14 +1,15 @@
 # BiteHub – Local Food Lovers Network 🍔
 
-## Live Site
-🔗 https://bitehub2.web.app/
-
----
-
-## About the Project
+## Project Overview
 
 **BiteHub (Local Food Lovers Network)** is a community-driven MERN stack web application where food lovers can share their experiences with local restaurants, street food, and homemade meals.  
 The platform allows users to explore reviews, post ratings with photos, and save favorite food experiences in a secure and user-friendly environment.
+
+---
+
+## Live Website
+
+**Live URL:** https://bitehub2.web.app/
 
 ---
 
